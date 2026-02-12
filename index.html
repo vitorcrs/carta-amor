@@ -1,114 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Uma Carta Para Você</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #0a0a0a, #1a1a2e);
-      color: white;
-      font-family: 'Georgia', serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<title>Para Você ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .container {
-      max-width: 700px;
-      padding: 30px;
-      animation: fadeIn 3s ease;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
-    h1 {
-      font-size: 2.3em;
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
+<style>
+body {
+  margin:0;
+  height:100vh;
+  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-family:'Playfair Display', serif;
+  overflow:hidden;
+}
 
-    p {
-      font-size: 1.3em;
-      margin-bottom: 30px;
-      opacity: 0;
-      animation: typing 6s forwards;
-    }
+.container {
+  text-align:center;
+  max-width:90%;
+  animation: fadeIn 3s ease;
+}
 
-    button {
-      padding: 15px 35px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 30px;
-      background: #ff4d6d;
-      color: white;
-      cursor: pointer;
-      animation: pulse 2s infinite;
-      box-shadow: 0 0 15px rgba(255,77,109,0.7);
-    }
+h1 {
+  font-family:'Dancing Script', cursive;
+  font-size:2.5em;
+  margin-bottom:20px;
+}
 
-    button:hover {
-      background: #ff1f4b;
-    }
+p {
+  font-size:1.1em;
+  line-height:1.6;
+  opacity:0;
+  animation: aparecer 3s ease forwards;
+  animation-delay:2s;
+}
 
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
+button {
+  margin-top:40px;
+  padding:15px 35px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff7eb3;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 15px rgba(255,126,179,0.6);
+  opacity:0;
+  animation: aparecer 3s ease forwards;
+  animation-delay:5s;
+}
 
-    @keyframes pulse {
-      0% {transform: scale(1);}
-      50% {transform: scale(1.08);}
-      100% {transform: scale(1);}
-    }
-  </style>
+button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes aparecer {
+  to {opacity:1;}
+}
+
+/* estrelas */
+.star {
+  position:absolute;
+  background:white;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,100% {opacity:0.2;}
+  50% {opacity:1;}
+}
+</style>
 </head>
 
 <body>
 
 <audio autoplay loop>
-  <source src="sua-musica.mp3" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
 </audio>
 
+<script>
+for(let i=0;i<80;i++){
+  const star=document.createElement("div");
+  star.className="star";
+  star.style.top=Math.random()*100+"%";
+  star.style.left=Math.random()*100+"%";
+  star.style.animationDuration=(Math.random()*3+2)+"s";
+  document.body.appendChild(star);
+}
+</script>
+
 <div class="container">
-  <h1 id="title"></h1>
-  <p id="text"></p>
-  <button onclick="goToCarta()">Abrir minha carta 💌</button>
+  <h1>Para você, meu amor ❤️</h1>
+
+  <p>
+    Antes de ler minha carta,  
+    eu queria que você sentisse  
+    o que eu sinto quando penso em você.
+    <br><br>
+    Isso é mais do que palavras.  
+    É o meu coração em forma de site.
+  </p>
+
+  <button onclick="irParaCarta()">Abrir minha carta 💌</button>
 </div>
 
 <script>
-  const titleText = "Essa não é apenas uma carta…";
-  const mainText = "É tudo o que Deus colocou no meu coração para você.";
-
-  let i = 0;
-  let j = 0;
-
-  function typeTitle() {
-    if (i < titleText.length) {
-      document.getElementById("title").innerHTML += titleText.charAt(i);
-      i++;
-      setTimeout(typeTitle, 80);
-    } else {
-      setTimeout(typeText, 800);
-    }
-  }
-
-  function typeText() {
-    if (j < mainText.length) {
-      document.getElementById("text").style.opacity = 1;
-      document.getElementById("text").innerHTML += mainText.charAt(j);
-      j++;
-      setTimeout(typeText, 60);
-    }
-  }
-
-  function goToCarta() {
-    window.location.href = "carta.html";
-  }
-
-  typeTitle();
+function irParaCarta(){
+  window.location.href = "carta.html";
+}
 </script>
 
 </body>
