@@ -97,26 +97,14 @@ h2 {
   margin-bottom:10px;
 }
 
-.play-btn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#ffb6c1;
-  border:none;
-  border-radius:50%;
-  width:60px;
-  height:60px;
-  font-size:20px;
-  cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,0.3);
+.spotify-player {
+  margin: 15px 0;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- Corações -->
 <script>
 for(let i=0;i<20;i++){
   const heart=document.createElement("div");
@@ -130,15 +118,25 @@ for(let i=0;i<20;i++){
 </script>
 
 <div class="envelope" id="envelope">
-  <div class="lacre" id="lacre" onclick="abrirCarta()">❤</div>
+  <div class="lacre" onclick="abrirCarta()">❤</div>
   <p><strong>De:</strong> Vítor, seu príncipe</p>
-  <p><strong>Para:</strong> Meu amor</p>
+  <p><strong>Para:</strong> A mulher que tem meu coração</p>
   <p>Toque no coração para abrir</p>
 </div>
 
 <div class="carta-container hidden" id="carta">
   <h2>💌 Minha Carta</h2>
   <p class="instrucao">Arraste para cima para ler toda a carta</p>
+
+  <div class="spotify-player">
+    <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/track/5GbVzc6Ex5LYlLJqzRQhuy" 
+      width="100%" 
+      height="80" 
+      frameborder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </div>
 
 <p>
 Bom, hoje fazem dois meses, 62 dias para ser mais exato, desde que declarei meu amor por você.
@@ -170,35 +168,10 @@ Te amo.<br><br>
 </p>
 </div>
 
-<button class="play-btn hidden" id="playBtn" onclick="toggleMusic()">▶</button>
-
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-let tocando=false;
-
 function abrirCarta(){
   document.getElementById("envelope").classList.add("hidden");
   document.getElementById("carta").classList.remove("hidden");
-  document.getElementById("playBtn").classList.remove("hidden");
-}
-
-function toggleMusic(){
-  const music=document.getElementById("music");
-  const btn=document.getElementById("playBtn");
-
-  if(!tocando){
-    music.volume=0.25;
-    music.play();
-    btn.innerText="⏸";
-    tocando=true;
-  } else {
-    music.pause();
-    btn.innerText="▶";
-    tocando=false;
-  }
 }
 </script>
 
