@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Para: A mulher que tem meu coração</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  min-height:100vh;
+  background: linear-gradient(180deg,#0a0a0a,#2b0a1f);
+  color:white;
+  font-family:'Playfair Display',serif;
+  overflow-x:hidden;
+}
+
+.overlay {
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.start-btn {
+  background:#ff4d6d;
+  border:none;
+  padding:20px 30px;
+  border-radius:40px;
+  font-size:18px;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(255,77,109,0.6);
+}
+
+.container {
+  max-width:700px;
+  margin:auto;
+  padding:30px;
+  animation: fadeIn 3s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(50px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+h1 {
+  text-align:center;
+  font-family:'Dancing Script',cursive;
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+.text {
+  font-size:18px;
+  line-height:1.8;
+  text-align:justify;
+}
+
+.signature {
+  text-align:right;
+  margin-top:40px;
+  font-family:'Dancing Script',cursive;
+  font-size:26px;
+}
+
+.heart {
+  position:fixed;
+  color:rgba(255,0,80,0.3);
+  animation: float 12s linear infinite;
+}
+
+@keyframes float {
+  from {transform: translateY(100vh);}
+  to {transform: translateY(-10vh);}
+}
+
+.scroll {
+  text-align:center;
+  margin-bottom:15px;
+  font-size:14px;
+  color:#ffb3c1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay">
+  <button class="start-btn" onclick="startExperience()">Abrir minha carta 💌</button>
+</div>
+
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container" id="content" style="display:none;">
+  <h1>Para: A mulher que tem meu coração</h1>
+  <div class="scroll">⬇ Deslize para ler a carta ⬇</div>
+
+  <div class="text">
+Bom, hoje fazem dois meses, 62 dias para ser mais exato, desde que declarei meu amor por você.  
+E desde aquele dia, tudo ficou mais colorido. Tudo ganhou mais sentido.<br><br>
+
+Parecia que faltava um pequeno detalhe na minha vida, um detalhe de 1,57 de altura, linda, que é meu primeiro pensamento ao acordar e o último ao dormir.  
+Você é a primeira pessoa para quem eu digo bom dia e a última para quem eu digo boa noite.<br><br>
+
+Eu sei que ainda não estamos casados, mas em um futuro próximo eu espero estar ao seu lado vivendo esses momentos não mais virtualmente, mas presencialmente, sentindo o teu amor, o teu abraço e o teu cheiro perto de mim.<br><br>
+
+Eu amo você.  
+Eu amo sentir emoções com você.  
+Amo sentir sentimentos com você, sejam eles bons ou ruins, porque todos valem a pena quando estou ao seu lado.<br><br>
+
+Você é um presente de Deus na minha vida, e eu nunca vou me cansar de te dizer isso, porque é a maior verdade que existe para mim.  
+Mas a maior verdade que eu posso te dizer é esta:  
+Jesus te ama, Deus te ama e eu te amo.<br><br>
+
+Espero que esses dois meses que se completam hoje sejam apenas os primeiros de muitos que ainda virão.  
+Porque eu não quero viver apenas um tempo com você, eu quero viver a eternidade com você.  
+Quero viver pra sempre ao seu lado.<br><br>
+
+E se Deus permitir, até no céu eu quero estar com você.  
+Aqui e na eternidade.<br><br>
+
+Te amo.
+  </div>
+
+  <div class="signature">
+— Vítor 💖
+  </div>
+</div>
+
+<script>
+function startExperience(){
+  document.getElementById("overlay").style.display="none";
+  document.getElementById("content").style.display="block";
+  const music=document.getElementById("music");
+  music.volume=0.25;
+  music.play();
+}
+
+// corações
+for(let i=0;i<25;i++){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"%";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  heart.style.animationDuration=(Math.random()*10+5)+"s";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
