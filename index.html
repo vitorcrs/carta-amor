@@ -2,124 +2,191 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Para Você ❤️</title>
+<title>Carta para Meu Amor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin:0;
   height:100vh;
-  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  background: radial-gradient(circle at top, #fde2e4, #fadadd);
   display:flex;
   justify-content:center;
   align-items:center;
-  color:white;
-  font-family:'Playfair Display', serif;
+  font-family:'Playfair Display',serif;
   overflow:hidden;
 }
 
-.container {
+.heart {
+  position:absolute;
+  color:rgba(255,0,80,0.3);
+  font-size:20px;
+  animation: float 12s linear infinite;
+}
+
+@keyframes float {
+  from {transform: translateY(100vh);}
+  to {transform: translateY(-10vh);}
+}
+
+.envelope {
+  width:340px;
+  height:230px;
+  background:#fff5e6;
+  border-radius:12px;
+  position:relative;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
   text-align:center;
-  max-width:90%;
-  animation: fadeIn 3s ease;
+  padding-top:70px;
+  animation: pulse 2s infinite;
 }
 
-h1 {
-  font-family:'Dancing Script', cursive;
-  font-size:2.5em;
-  margin-bottom:20px;
+@keyframes pulse {
+  0%{transform:scale(1);}
+  50%{transform:scale(1.03);}
+  100%{transform:scale(1);}
 }
 
-p {
-  font-size:1.1em;
-  line-height:1.6;
-  opacity:0;
-  animation: aparecer 3s ease forwards;
-  animation-delay:2s;
-}
-
-button {
-  margin-top:40px;
-  padding:15px 35px;
-  font-size:18px;
-  border:none;
-  border-radius:30px;
-  background:#ff7eb3;
+.lacre {
+  width:80px;
+  height:80px;
+  background:crimson;
+  border-radius:50%;
+  position:absolute;
+  top:-40px;
+  left:50%;
+  transform:translateX(-50%);
   color:white;
+  font-size:36px;
+  line-height:80px;
   cursor:pointer;
-  box-shadow:0 0 15px rgba(255,126,179,0.6);
-  opacity:0;
-  animation: aparecer 3s ease forwards;
-  animation-delay:5s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
+  transition: all 0.8s ease;
 }
 
-button:hover {
-  transform: scale(1.05);
+.lacre:hover {
+  transform:translateX(-50%) scale(1.1) rotate(10deg);
+}
+
+.hidden {display:none;}
+
+.carta-container {
+  width:90%;
+  max-width:450px;
+  height:85vh;
+  background:linear-gradient(#fffaf0,#fdf1e0);
+  border-radius:16px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.35);
+  padding:25px;
+  overflow-y:auto;
+  animation: slideUp 1.5s ease;
+}
+
+@keyframes slideUp {
+  from {transform:translateY(300px); opacity:0;}
+  to {transform:translateY(0); opacity:1;}
+}
+
+h2 {
+  text-align:center;
+  font-family:'Dancing Script',cursive;
+  font-size:32px;
+}
+
+.instrucao {
+  text-align:center;
+  font-size:14px;
+  color:#777;
+  margin-bottom:12px;
+}
+
+.spotify-player {
+  margin:15px 0 25px 0;
+}
+
+.fade-text {
+  animation: fadeIn 2s ease;
 }
 
 @keyframes fadeIn {
   from {opacity:0;}
   to {opacity:1;}
 }
-
-@keyframes aparecer {
-  to {opacity:1;}
-}
-
-/* estrelas */
-.star {
-  position:absolute;
-  background:white;
-  width:2px;
-  height:2px;
-  border-radius:50%;
-  animation: twinkle 3s infinite ease-in-out;
-}
-
-@keyframes twinkle {
-  0%,100% {opacity:0.2;}
-  50% {opacity:1;}
-}
 </style>
 </head>
 
 <body>
 
-<audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-for(let i=0;i<80;i++){
-  const star=document.createElement("div");
-  star.className="star";
-  star.style.top=Math.random()*100+"%";
-  star.style.left=Math.random()*100+"%";
-  star.style.animationDuration=(Math.random()*3+2)+"s";
-  document.body.appendChild(star);
+for(let i=0;i<25;i++){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"%";
+  heart.style.fontSize=(Math.random()*20+12)+"px";
+  heart.style.animationDuration=(Math.random()*12+6)+"s";
+  document.body.appendChild(heart);
 }
 </script>
 
-<div class="container">
-  <h1>Para você, meu amor ❤️</h1>
+<div class="envelope" id="envelope">
+  <div class="lacre" onclick="abrirCarta()">❤</div>
+  <p><strong>De:</strong> Vítor, seu príncipe</p>
+  <p><strong>Para:</strong> A mulher que tem meu coração</p>
+  <p>Toque no coração para abrir</p>
+</div>
 
-  <p>
-    Antes de ler minha carta,  
-    eu queria que você sentisse  
-    o que eu sinto quando penso em você.
-    <br><br>
-    Isso é mais do que palavras.  
-    É o meu coração em forma de site.
-  </p>
+<div class="carta-container hidden fade-text" id="carta">
+  <h2>💌 Minha Carta</h2>
+  <p class="instrucao">Coloque a música antes de começar a ler 🎵</p>
 
-  <button onclick="irParaCarta()">Abrir minha carta 💌</button>
+  <div class="spotify-player">
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/12s9pwzuMlUuJjkkMOLXxx"
+      width="100%"
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </div>
+
+<p>
+Bom, hoje fazem dois meses, 62 dias para ser mais exato, desde que declarei meu amor por você.
+E desde aquele dia, tudo ficou mais colorido. Tudo ganhou mais sentido.<br><br>
+
+Parecia que faltava um pequeno detalhe na minha vida, um detalhe de 1,57 de altura, linda, que é meu primeiro pensamento ao acordar e o último ao dormir.
+Você é a primeira pessoa para quem eu digo bom dia e a última para quem eu digo boa noite.<br><br>
+
+Eu sei que ainda não estamos casados, mas em um futuro próximo eu espero estar ao seu lado vivendo esses momentos não mais virtualmente, mas presencialmente, sentindo o teu amor, o teu abraço e o teu cheiro perto de mim.<br><br>
+
+Eu amo você.
+Eu amo sentir emoções com você.
+Amo sentir sentimentos com você, sejam eles bons ou ruins, porque todos valem a pena quando estou ao seu lado.<br><br>
+
+Você é um presente de Deus na minha vida, e eu nunca vou me cansar de te dizer isso, porque é a maior verdade que existe para mim.
+Mas a maior verdade que eu posso te dizer é esta:
+Jesus te ama, Deus te ama e eu te amo.<br><br>
+
+Espero que esses dois meses que se completam hoje sejam apenas os primeiros de muitos que ainda virão.
+Porque eu não quero viver apenas um tempo com você, eu quero viver a eternidade com você.
+Quero viver pra sempre ao seu lado.<br><br>
+
+E se Deus permitir, até no céu eu quero estar com você.
+Aqui e na eternidade.<br><br>
+
+Te amo.<br><br>
+
+— Seu príncipe
+</p>
+
 </div>
 
 <script>
-function irParaCarta(){
-  window.location.href = "carta.html";
+function abrirCarta(){
+  document.getElementById("envelope").classList.add("hidden");
+  document.getElementById("carta").classList.remove("hidden");
 }
 </script>
 
