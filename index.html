@@ -11,7 +11,7 @@
 body {
   margin:0;
   height:100vh;
-  background: linear-gradient(#fde2e4,#fadadd);
+  background: radial-gradient(circle at top, #fde2e4, #fadadd);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -21,9 +21,9 @@ body {
 
 .heart {
   position:absolute;
-  color:rgba(255,0,80,0.4);
+  color:rgba(255,0,80,0.3);
   font-size:20px;
-  animation: float 10s linear infinite;
+  animation: float 12s linear infinite;
 }
 
 @keyframes float {
@@ -32,50 +32,54 @@ body {
 }
 
 .envelope {
-  width:320px;
-  height:220px;
+  width:340px;
+  height:230px;
   background:#fff5e6;
-  border-radius:10px;
+  border-radius:12px;
   position:relative;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
   text-align:center;
-  padding-top:60px;
+  padding-top:70px;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   0%{transform:scale(1);}
-  50%{transform:scale(1.02);}
+  50%{transform:scale(1.03);}
   100%{transform:scale(1);}
 }
 
 .lacre {
-  width:70px;
-  height:70px;
+  width:80px;
+  height:80px;
   background:crimson;
   border-radius:50%;
   position:absolute;
-  top:-35px;
+  top:-40px;
   left:50%;
   transform:translateX(-50%);
   color:white;
-  font-size:32px;
-  line-height:70px;
+  font-size:36px;
+  line-height:80px;
   cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,0.3);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
+  transition: all 0.8s ease;
+}
+
+.lacre:hover {
+  transform:translateX(-50%) scale(1.1) rotate(10deg);
 }
 
 .hidden {display:none;}
 
 .carta-container {
   width:90%;
-  max-width:420px;
-  height:80vh;
-  background:#fffaf0;
-  border-radius:12px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.25);
-  padding:20px;
+  max-width:450px;
+  height:85vh;
+  background:linear-gradient(#fffaf0,#fdf1e0);
+  border-radius:16px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.35);
+  padding:25px;
   overflow-y:auto;
   animation: slideUp 1.5s ease;
 }
@@ -88,17 +92,27 @@ body {
 h2 {
   text-align:center;
   font-family:'Dancing Script',cursive;
+  font-size:32px;
 }
 
 .instrucao {
   text-align:center;
   font-size:14px;
-  color:#555;
-  margin-bottom:10px;
+  color:#777;
+  margin-bottom:12px;
 }
 
 .spotify-player {
-  margin: 15px 0;
+  margin:15px 0 25px 0;
+}
+
+.fade-text {
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
 }
 </style>
 </head>
@@ -106,13 +120,13 @@ h2 {
 <body>
 
 <script>
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
   const heart=document.createElement("div");
   heart.className="heart";
   heart.innerHTML="❤";
   heart.style.left=Math.random()*100+"%";
-  heart.style.fontSize=(Math.random()*20+10)+"px";
-  heart.style.animationDuration=(Math.random()*10+5)+"s";
+  heart.style.fontSize=(Math.random()*20+12)+"px";
+  heart.style.animationDuration=(Math.random()*12+6)+"s";
   document.body.appendChild(heart);
 }
 </script>
@@ -124,16 +138,16 @@ for(let i=0;i<20;i++){
   <p>Toque no coração para abrir</p>
 </div>
 
-<div class="carta-container hidden" id="carta">
+<div class="carta-container hidden fade-text" id="carta">
   <h2>💌 Minha Carta</h2>
-  <p class="instrucao">Arraste para cima para ler toda a carta</p>
+  <p class="instrucao">Coloque a música antes de começar a ler 🎵</p>
 
   <div class="spotify-player">
-    <iframe style="border-radius:12px" 
-      src="https://open.spotify.com/embed/track/5GbVzc6Ex5LYlLJqzRQhuy" 
-      width="100%" 
-      height="80" 
-      frameborder="0" 
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/12s9pwzuMlUuJjkkMOLXxx"
+      width="100%"
+      height="80"
+      frameborder="0"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
     </iframe>
   </div>
@@ -164,8 +178,9 @@ Aqui e na eternidade.<br><br>
 
 Te amo.<br><br>
 
-— Vitor
+— Seu príncipe
 </p>
+
 </div>
 
 <script>
