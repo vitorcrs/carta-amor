@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carta para Meu Amor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  height:100vh;
+  background: linear-gradient(#fde2e4,#fadadd);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Playfair Display',serif;
+  overflow:hidden;
+}
+
+.heart {
+  position:absolute;
+  color:rgba(255,0,80,0.4);
+  font-size:20px;
+  animation: float 10s linear infinite;
+}
+
+@keyframes float {
+  from {transform: translateY(100vh);}
+  to {transform: translateY(-10vh);}
+}
+
+.envelope {
+  width:320px;
+  height:220px;
+  background:#fff5e6;
+  border-radius:10px;
+  position:relative;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  text-align:center;
+  padding-top:60px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%{transform:scale(1);}
+  50%{transform:scale(1.02);}
+  100%{transform:scale(1);}
+}
+
+.lacre {
+  width:70px;
+  height:70px;
+  background:crimson;
+  border-radius:50%;
+  position:absolute;
+  top:-35px;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  font-size:32px;
+  line-height:70px;
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,0.3);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.hidden {display:none;}
+
+.carta-container {
+  width:90%;
+  max-width:420px;
+  height:80vh;
+  background:#fffaf0;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.25);
+  padding:20px;
+  overflow-y:auto;
+  animation: slideUp 1.5s ease;
+}
+
+@keyframes slideUp {
+  from {transform:translateY(300px); opacity:0;}
+  to {transform:translateY(0); opacity:1;}
+}
+
+h2 {
+  text-align:center;
+  font-family:'Dancing Script',cursive;
+}
+
+.instrucao {
+  text-align:center;
+  font-size:14px;
+  color:#555;
+  margin-bottom:10px;
+}
+
+.play-btn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#ffb6c1;
+  border:none;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Corações -->
+<script>
+for(let i=0;i<20;i++){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"%";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  heart.style.animationDuration=(Math.random()*10+5)+"s";
+  document.body.appendChild(heart);
+}
+</script>
+
+<div class="envelope" id="envelope">
+  <div class="lacre" id="lacre" onclick="abrirCarta()">❤</div>
+  <p><strong>De:</strong> Vítor, seu príncipe</p>
+  <p><strong>Para:</strong> Meu amor</p>
+  <p>Toque no coração para abrir</p>
+</div>
+
+<div class="carta-container hidden" id="carta">
+  <h2>💌 Minha Carta</h2>
+  <p class="instrucao">Arraste para cima para ler toda a carta</p>
+
+<p>
+Bom, hoje fazem dois meses, 62 dias para ser mais exato, desde que declarei meu amor por você.
+E desde aquele dia, tudo ficou mais colorido. Tudo ganhou mais sentido.<br><br>
+
+Parecia que faltava um pequeno detalhe na minha vida, um detalhe de 1,57 de altura, linda, que é meu primeiro pensamento ao acordar e o último ao dormir.
+Você é a primeira pessoa para quem eu digo bom dia e a última para quem eu digo boa noite.<br><br>
+
+Eu sei que ainda não estamos casados, mas em um futuro próximo eu espero estar ao seu lado vivendo esses momentos não mais virtualmente, mas presencialmente, sentindo o teu amor, o teu abraço e o teu cheiro perto de mim.<br><br>
+
+Eu amo você.
+Eu amo sentir emoções com você.
+Amo sentir sentimentos com você, sejam eles bons ou ruins, porque todos valem a pena quando estou ao seu lado.<br><br>
+
+Você é um presente de Deus na minha vida, e eu nunca vou me cansar de te dizer isso, porque é a maior verdade que existe para mim.
+Mas a maior verdade que eu posso te dizer é esta:
+Jesus te ama, Deus te ama e eu te amo.<br><br>
+
+Espero que esses dois meses que se completam hoje sejam apenas os primeiros de muitos que ainda virão.
+Porque eu não quero viver apenas um tempo com você, eu quero viver a eternidade com você.
+Quero viver pra sempre ao seu lado.<br><br>
+
+E se Deus permitir, até no céu eu quero estar com você.
+Aqui e na eternidade.<br><br>
+
+Te amo.<br><br>
+
+— Vitor
+</p>
+</div>
+
+<button class="play-btn hidden" id="playBtn" onclick="toggleMusic()">▶</button>
+
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let tocando=false;
+
+function abrirCarta(){
+  document.getElementById("envelope").classList.add("hidden");
+  document.getElementById("carta").classList.remove("hidden");
+  document.getElementById("playBtn").classList.remove("hidden");
+}
+
+function toggleMusic(){
+  const music=document.getElementById("music");
+  const btn=document.getElementById("playBtn");
+
+  if(!tocando){
+    music.volume=0.25;
+    music.play();
+    btn.innerText="⏸";
+    tocando=true;
+  } else {
+    music.pause();
+    btn.innerText="▶";
+    tocando=false;
+  }
+}
+</script>
+
+</body>
+</html>
